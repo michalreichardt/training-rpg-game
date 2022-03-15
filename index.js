@@ -1,17 +1,24 @@
 //consts
-const heroSide = document.getElementById("hero")
-const monsterSide = document.getElementById("monster")
+const gameArea = document.getElementById("game-area")
 
-const attackHeroButton = document.getElementById("attack-hero-button")
-const attackMonsterButton = document.getElementById("attack-monster-button")
+const player1camp = document.getElementById("player1-camp")
+const player1battlefield = document.getElementById("player1-battlefield")
+const player2camp = document.getElementById("player2-camp")
+const player2battlefield = document.getElementById("player2-battlefield")
 
-const reinforceHeroButton = document.getElementById("reinforce-hero-button")
-const reinforceMonsterButton = document.getElementById("reinforce-monster-button")
+// buttons
+const player1AttackButton = document.getElementById("player1AttackButton")
+const player2AttackButton = document.getElementById("player2AttackButton")
+
+// field characters
+const player1FieldWarriorButton = document.getElementById("player1FieldWarriorButton")
+const player1FieldBruteButton = document.getElementById("player1FieldBruteButton")
+const player2FieldWarriorButton = document.getElementById("player2FieldWarriorButton")
+const player2FieldBruteButton = document.getElementById("player2FieldBruteButton")
 
 // side rosters
 class Character {
-    constructor(side, name, avatar, health, dice) {
-        this.side = side
+    constructor(name, avatar, health, dice) {
         this.name = name
         this.avatar = avatar
         this.health = health
@@ -19,14 +26,41 @@ class Character {
     }
 }
 
-let warrior = new Character(heroSide, "Warrior", "sa-icon-stone-spear", 60, 2)
-let orc = new Character(monsterSide, "Orc", "sa-icon-bone-mace", 10, 4)
+let warrior = new Character("Warrior", "sa-icon-stone-spear", 60, 2)
+let brute = new Character("Brute", "sa-icon-bone-mace", 10, 4)
+
 
 //functions
 
+function generateArea(type, owner, size){
+    //type: camp or battlefield
+    //owner: player1 or player2
+    let par1 = ""
+    let par2 = ""
+    
+    //check for type and ownership
+    if (type === "battlefield") {par1 = "battlefield"} else {par1 = "camp"}
+    if (owner === "player1") {par2 = "player1"} else {par2 = "player2"}
+    
+    //generate wrapper div with propper id
+    const area = document.createElement('div')
+    area.id = `${par2}-${par1}`
+    area.classList.add("flex", "area")
+    //generate internal divs with propper id and class
+    for (i=0;i<size;i++){
+        const plot = document.createElement('div')
+            plot.id = `${par2}-${par1}-plot${i}`
+            plot.classList.add(`${par1}-plot`)
+        area.appendChild(plot);
+    }
+
+    //inset generated area into relevant field - in order of function deployment
+    gameArea.appendChild(area);
+
+}
 
 function generateCard(character){
-    const {side, name, avatar, health, dice} = character
+    const {name, avatar, health, dice} = character
     
     const characterCardDiv = document.createElement('div')
     characterCardDiv.classList.add("character-card")
@@ -52,9 +86,7 @@ function generateCard(character){
     characterCardDiv.appendChild(avatarCCwrapper)
 
         const avatarCCsvg = document.createElement("svg")
-        avatarCCsvg.classList.add("avatar")
-        avatarCCsvg.classList.add("icon")
-        avatarCCsvg.classList.add(avatar)
+        avatarCCsvg.classList.add("avatar", "icon", avatar)
         avatarCCwrapper.appendChild(avatarCCsvg)
 
     const dicecontainerCCDiv = document.createElement("div");
@@ -69,22 +101,76 @@ function generateCard(character){
 
     characterCardDiv.appendChild(dicecontainerCCDiv);
 
-    side.appendChild(characterCardDiv);
+    return characterCardDiv
 }
 
-function rollDice(side){
-    let characters = side.querySelectorAll("div.character-card")
-    for (char of characters){
-        let dices = char.querySelectorAll("div.dice-container > div.dice")
+function assingCard(owner, character){
+    // check for player
+    let par1 = ""
+    if (owner === "player1") {par1 = "player1-battlefield"} else {par1 = "player2-battlefield"} 
+    const {name, avatar, health, dice} = character
+    
+    // grab appropriate area, generate apropriate card
+    const area = document.getElementById(par1).children
+    let char = generateCard(character)
+
+
+    // find the first free battlefield plot (without a character) and place a character there
+    let childrenArray = []
+    for (plot of area) {
+        if (plot.children.length === 0) {
+            plot.appendChild(char)
+            break
+        } else {
+            // put all classes of every child from one plot into an array
+            childrenArray = []
+            for (child of plot.children) {childrenArray.push(child.className)}
+            // searches the array for the presence of "character-card" classes
+            if (!childrenArray.some(e => e == "character-card")) {
+                plot.appendChild(char)
+                break 
+            }    
+        }      
+    }               
+}
+
+//  test function for object placement on battlefield areas - could be usefull later
+function test(){
+
+    let div1 = document.createElement("div")
+    let div2 = document.createElement("div")
+    let div3 = document.createElement("div")
+    let div4 = document.createElement("div")
+    div3.classList.add("character-card")
+    document.getElementById("player1-battlefield-plot0").appendChild(div1)
+    document.getElementById("player1-battlefield-plot4").appendChild(div2)
+    document.getElementById("player1-battlefield-plot1").appendChild(div4)
+    document.getElementById("player1-battlefield-plot1").appendChild(div3)  
+}
+
+function rollDice(owner){
+    if (owner === "player1") {par1 = "#player1-battlefield"} else {par1 = "#player2-battlefield"}
+    let plots = document.querySelector(par1).querySelectorAll("div.battlefield-plot")
+    for (plot of plots){
+        let dices = plot.querySelector("div.character-card").querySelectorAll("div.dice-container > div.dice")
         for (die of dices) {
             die.innerText = Math.floor(Math.random()*6)+1         
         }
     }
 }
 
-// event listener
-attackMonsterButton.addEventListener('click', function(){rollDice(monsterSide)})
-attackHeroButton.addEventListener('click', function(){rollDice(heroSide)})
+// event listeners
+player1AttackButton.addEventListener('click', function(){rollDice("player1")})
+player2AttackButton.addEventListener('click', function(){rollDice("player2")})
 
-reinforceHeroButton.addEventListener('click', function(){generateCard(warrior)})
-reinforceMonsterButton.addEventListener('click', function(){generateCard(orc)})
+player1FieldWarriorButton.addEventListener('click', function(){assingCard("player1", warrior)})
+player1FieldBruteButton.addEventListener('click', function(){assingCard("player1", brute)})
+
+player2FieldWarriorButton.addEventListener('click', function(){assingCard("player2", warrior)})
+player2FieldBruteButton.addEventListener('click', function(){assingCard("player2", brute)})
+
+// generating basic areas - for now - hardcoded scenario
+generateArea("camp", "player1", 8)
+generateArea("battlefield", "player1", 8)
+generateArea("battlefield", "player2", 8)
+generateArea("camp", "player2", 8)

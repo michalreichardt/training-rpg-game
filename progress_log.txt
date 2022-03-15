@@ -5,4 +5,15 @@ t15-03-2022 / svg sprite introduction
     some apropriate code changes added to index html css and js files
     character name changed from wizard to warrior
 
+t15-03-2022 / game area and menu area creation
+    created a function to generate game areas - with potential for different single player scenarios
+    rewritten the function assigning cards to game areas
+    rewritten the function rolling dices
+
+ t15-03-2022 / design changes
+    character name changed from orc to brute
+    renamed buttons, some id's and classes to fit game convention
+
+- near future - implement health bar? 
+
 

@@ -21,45 +21,48 @@ html, body {
 }
 
 main {
-    display: flex;
-    max-width: 520px;
+    width: 1300px;
+    padding: 0 auto;
 } 
 
-@media(min-width:550px){
-   main {
-        max-width: 1100px;
-    } 
+#game-area{
+    width: 1300px;
+    justify-content: space-evenly;
+    display: flex;
 }
 
+#menu-area{
+    width: 1300px;
+    justify-content: space-evenly;
+    display: flex;
+}
 
-
-.hero{
+.area {
+    width: 320px;
+    justify-content: space-evenly;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-grow: 1;
-    flex-basis: auto;
-    max-width: 500px;
-
 }
 
-.monster{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-grow: 1;
-    max-width: 500px;
+.battlefield-plot{
+    width: 150px;
+    height: 150px;
+    border: 1px solid blue;
 }
-
+    
+.camp-plot{
+    width: 150px;
+    height: 150px;
+    border: 1px solid blue;
+}
+    
 .character-card {
-    height: 22rem;
-    width: 180px;
-    padding: 1vh 0;
-    font-size: 1.6rem;
+    height: 95%;
+    width: 95%;
+    padding: auto;
+    font-size: 1rem;
     color: white;
-    border-radius: 14px;
+    border-radius: 15px;
     position: relative;
     background: #231d24;
     text-align: center;
@@ -69,24 +72,10 @@ main {
                 0px 0px 10px rgba(117,182,214,0.2);
 }
 
-@media(min-width:550px){
-    .character-card {
-        border: 0.2rem solid #000721;
-        height: 22rem;
-        width: 230px;
-    }
-}
-
 .name {
-    margin: 0.50rem 0;
-    width: 100%;
-    letter-spacing: 0.08em;
-}
-
-@media(min-width:550px){
-    .name {
-    margin: 1vh 0;
-}
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0.1rem;
 }
 
 .avatar {
@@ -99,19 +88,9 @@ main {
 }
 
 .health {
-    font-size:1.1rem;
-    font-weight: normal;
-    width:90%;
-    text-align: center;
-    margin: 1vh 5%;
-    color:#ccc;
-    letter-spacing: 0.03em
-}
-
-@media(min-width:550px){
-    .health {
-        margin: 1vh 5%;
-    }
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0.1rem;
 }
 
 .health b {
@@ -139,7 +118,7 @@ main {
 
 .dice-container {
     width:100%;
-    height:30%;
+    height:25%;
     position: absolute;
     bottom:0;
     left:0px;
@@ -151,47 +130,21 @@ main {
     gap: .5rem;
 }
 
-@media(min-width:550px){
-    .dice-container {
-        height: 20%;
-        border-bottom-left-radius: 3px;
-        border-bottom-right-radius: 3px;
-    }
-}
-
-.dice, .placeholder-dice{
-    height: 3rem;
-    width: 3rem;
+.dice{
+    height: 1.5rem;
+    width: 1.5rem;
     background: #fff;   
     border-radius: 5px;
     border:1px solid #666;
     color:#000721;
-    line-height: 3.2rem;
+    line-height: 1.55rem;
         
-}
-
-@media(min-width:550px){
-.dice-container .dice, .dice-container .placeholder-dice{
-    height: 2.8rem;
-    width: 2.8rem;
-    line-height: 3rem;
-}
-}
-
-.dice-container .placeholder-dice{
-    background-color: transparent;
 }
 
 .actions{
     display: flex;
     gap: 1rem;
     max-width: 520px;
-}
-
-@media(min-width:550px){
-    .actions{
-        max-width: 1100px;
-    }
 }
 
 .hero-side-actions, .monster-side-actions {
@@ -234,12 +187,6 @@ button:focus { outline: 0 }
     text-align: center;
 }
 
-.end-emoji{
-    font-size: 80px;
-}
-
-.trial1{
-    height: 100px;
-    width: 100px;
-    color: blue;
+.flex{
+    display: flex;
 }
