@@ -1,0 +1,8 @@
+t0 / initial commit
+t15-03-2022 / svg sprite introduction
+    sprite.svg added to images folder
+    sprite.css added
+    some apropriate code changes added to index html css and js files
+    character name changed from wizard to warrior
+
+

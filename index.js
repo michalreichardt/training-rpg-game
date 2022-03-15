@@ -9,10 +9,6 @@ const reinforceHeroButton = document.getElementById("reinforce-hero-button")
 const reinforceMonsterButton = document.getElementById("reinforce-monster-button")
 
 // side rosters
-let wizard = new Character(heroSide, "Wizard", "wizard", 60, 2)
-let orc = new Character(monsterSide, "Orc", "orc", 10, 4)
-
-//functions
 class Character {
     constructor(side, name, avatar, health, dice) {
         this.side = side
@@ -22,6 +18,12 @@ class Character {
         this.dice = dice
     }
 }
+
+let warrior = new Character(heroSide, "Warrior", "sa-icon-stone-spear", 60, 2)
+let orc = new Character(monsterSide, "Orc", "sa-icon-bone-mace", 10, 4)
+
+//functions
+
 
 function generateCard(character){
     const {side, name, avatar, health, dice} = character
@@ -44,10 +46,16 @@ function generateCard(character){
 
     characterCardDiv.appendChild(healthCCp);
 
-    const avatarCCimg = document.createElement("img");
-    avatarCCimg.classList.add("avatar")
-    avatarCCimg.src = `images/${avatar}.png`
-    characterCardDiv.appendChild(avatarCCimg);
+    // avatar
+    const avatarCCwrapper = document.createElement("div")
+    avatarCCwrapper.classList.add("avatar-wrapper")
+    characterCardDiv.appendChild(avatarCCwrapper)
+
+        const avatarCCsvg = document.createElement("svg")
+        avatarCCsvg.classList.add("avatar")
+        avatarCCsvg.classList.add("icon")
+        avatarCCsvg.classList.add(avatar)
+        avatarCCwrapper.appendChild(avatarCCsvg)
 
     const dicecontainerCCDiv = document.createElement("div");
     dicecontainerCCDiv.classList.add("dice-container")
@@ -78,5 +86,5 @@ function rollDice(side){
 attackMonsterButton.addEventListener('click', function(){rollDice(monsterSide)})
 attackHeroButton.addEventListener('click', function(){rollDice(heroSide)})
 
-reinforceHeroButton.addEventListener('click', function(){generateCard(wizard)})
+reinforceHeroButton.addEventListener('click', function(){generateCard(warrior)})
 reinforceMonsterButton.addEventListener('click', function(){generateCard(orc)})
