@@ -16,9 +16,15 @@ const player1FieldBruteButton = document.getElementById("player1FieldBruteButton
 const player2FieldWarriorButton = document.getElementById("player2FieldWarriorButton")
 const player2FieldBruteButton = document.getElementById("player2FieldBruteButton")
 
+const player1ConstructCampfireButton = document.getElementById("player1ConstructCampfireButton")
+const player2ConstructCampfireButton = document.getElementById("player2ConstructCampfireButton")
+
+
+
 // side rosters
 class Character {
-    constructor(name, avatar, health, dice) {
+    constructor(type, name, avatar, health, dice) {
+        this.type = type
         this.name = name
         this.avatar = avatar
         this.health = health
@@ -26,8 +32,21 @@ class Character {
     }
 }
 
-let warrior = new Character("Warrior", "sa-icon-stone-spear", 60, 2)
-let brute = new Character("Brute", "sa-icon-bone-mace", 10, 4)
+let warrior = new Character("character-card", "Warrior", "icon-stone-spear", 6, 2)
+let brute = new Character("character-card", "Brute", "icon-bone-mace", 3, 4)
+
+class Building {
+    constructor(type, name, avatar, resource1, frequency1) {
+        this.type = type
+        this.name = name
+        this.avatar = avatar
+        this.resource1 = resource1
+        this.frequency1 = frequency1
+    }
+}
+
+let campfire = new Building("building-card", "Campfire", "icon-campfire", "icon-rally-the-troops", 1)
+let fence = new Building("building-card", "Fence", "icon-stakes-fence", "icon-rally-the-troops", 2 )
 
 
 //functions
@@ -59,26 +78,31 @@ function generateArea(type, owner, size){
 
 }
 
-function generateCard(character){
+function generateCharacterCard(character){
     const {name, avatar, health, dice} = character
     
+    // creating wrapper div
     const characterCardDiv = document.createElement('div')
     characterCardDiv.classList.add("character-card")
 
+    // generating health points
+    const healthBarCCDiv = document.createElement('div')
+    healthBarCCDiv.classList.add("healthbar")
+    
+        for (let i = 0; i<health; i++){
+            const healthPointCCDiv = document.createElement("div");
+            healthPointCCDiv.classList.add("healthpoint")
+            healthPointCCDiv.classList.add("healthpoint-filled")
+            healthBarCCDiv.appendChild(healthPointCCDiv);
+        }
+
+    characterCardDiv.appendChild(healthBarCCDiv);
+
+    // generating name
     const nameCCh4 = document.createElement("h4");
     nameCCh4.classList.add("name")
     nameCCh4.textContent = name
     characterCardDiv.appendChild(nameCCh4);
-
-    const healthCCp = document.createElement("p");
-    healthCCp.textContent = " health: " 
-    healthCCp.classList.add("health")
-
-        const healthValueCCb = document.createElement("b");
-        healthValueCCb.textContent = health
-        healthCCp.appendChild(healthValueCCb);
-
-    characterCardDiv.appendChild(healthCCp);
 
     // avatar
     const avatarCCwrapper = document.createElement("div")
@@ -89,6 +113,7 @@ function generateCard(character){
         avatarCCsvg.classList.add("avatar", "icon", avatar)
         avatarCCwrapper.appendChild(avatarCCsvg)
 
+    // generating dices
     const dicecontainerCCDiv = document.createElement("div");
     dicecontainerCCDiv.classList.add("dice-container")
 
@@ -104,30 +129,88 @@ function generateCard(character){
     return characterCardDiv
 }
 
-function assingCard(owner, character){
-    // check for player
-    let par1 = ""
-    if (owner === "player1") {par1 = "player1-battlefield"} else {par1 = "player2-battlefield"} 
-    const {name, avatar, health, dice} = character
+function generateBuildingCard(building){
+    const {name, avatar, resource1, frequency1} = building
     
-    // grab appropriate area, generate apropriate card
-    const area = document.getElementById(par1).children
-    let char = generateCard(character)
+    // creating wrapper div
+    const buildingCardDiv = document.createElement('div')
+    buildingCardDiv.classList.add("building-card")
 
+    // generating name
+    const nameBCh4 = document.createElement("h4")
+    nameBCh4.classList.add("name")
+    nameBCh4.textContent = name
+    buildingCardDiv.appendChild(nameBCh4)
 
-    // find the first free battlefield plot (without a character) and place a character there
+    // avatar
+    const avatarBCwrapper = document.createElement("div")
+    avatarBCwrapper.classList.add("avatar-wrapper")
+    buildingCardDiv.appendChild(avatarBCwrapper)
+
+        const avatarBCsvg = document.createElement("svg")
+        avatarBCsvg.classList.add("avatar", "icon", avatar)
+        avatarBCwrapper.appendChild(avatarBCsvg)
+
+    const bottomcontainerBCDiv = document.createElement("div")
+    bottomcontainerBCDiv.classList.add("bottom-container")
+
+        const resourceBCwrapper = document.createElement("div")
+        resourceBCwrapper.classList.add("resource-wrapper")
+        bottomcontainerBCDiv.appendChild(resourceBCwrapper)
+
+            const resourceBCsvg = document.createElement("svg")
+            resourceBCsvg.classList.add("avatar", "icon", resource1)
+            resourceBCwrapper.appendChild(resourceBCsvg)
+            
+            const frequencyBC = document.createElement("div")
+            frequencyBC.classList.add("frequency")
+            frequencyBC.textContent = `+${frequency1}`
+            resourceBCwrapper.appendChild(frequencyBC)
+
+    buildingCardDiv.appendChild(bottomcontainerBCDiv)
+
+    return buildingCardDiv
+}
+
+function assignCard(owner, what){
+    let player = ""
+    let where = ""
+    let cardClass = ""
+    let card = ""
+    
+    // check for player
+    if (owner === "player1") {player = "player1"} else {player = "player2"}
+
+    // check for type of card, run apropriate functions
+    if (what.type === "character-card") {
+        where = "battlefield"
+        cardClass = "character-card"
+        const {type, name, avatar, health, dice} = what
+        card = generateCharacterCard(what)
+    } else {
+        where = "camp"
+        cardClass = "building-card"
+        const {type, avatar, resource1, frequency1} = what
+        card = generateBuildingCard(what)
+    }
+
+    // grab appropriate area
+    const areaClass = `${player}-${where}`
+    const area = document.getElementById(areaClass).children
+
+    // find the first free plot and place card there
     let childrenArray = []
     for (plot of area) {
         if (plot.children.length === 0) {
-            plot.appendChild(char)
+            plot.appendChild(card)
             break
         } else {
             // put all classes of every child from one plot into an array
             childrenArray = []
             for (child of plot.children) {childrenArray.push(child.className)}
-            // searches the array for the presence of "character-card" classes
-            if (!childrenArray.some(e => e == "character-card")) {
-                plot.appendChild(char)
+            // searches the array for the presence of "character-card" or "battlefield-card" classes
+            if (!childrenArray.some(e => e == cardClass)) {
+                plot.appendChild(card)
                 break 
             }    
         }      
@@ -163,11 +246,14 @@ function rollDice(owner){
 player1AttackButton.addEventListener('click', function(){rollDice("player1")})
 player2AttackButton.addEventListener('click', function(){rollDice("player2")})
 
-player1FieldWarriorButton.addEventListener('click', function(){assingCard("player1", warrior)})
-player1FieldBruteButton.addEventListener('click', function(){assingCard("player1", brute)})
+player1FieldWarriorButton.addEventListener('click', function(){assignCard("player1", warrior)})
+player1FieldBruteButton.addEventListener('click', function(){assignCard("player1", brute)})
 
-player2FieldWarriorButton.addEventListener('click', function(){assingCard("player2", warrior)})
-player2FieldBruteButton.addEventListener('click', function(){assingCard("player2", brute)})
+player2FieldWarriorButton.addEventListener('click', function(){assignCard("player2", warrior)})
+player2FieldBruteButton.addEventListener('click', function(){assignCard("player2", brute)})
+
+player1ConstructCampfireButton.addEventListener('click', function(){assignCard("player1", campfire)})
+player2ConstructCampfireButton.addEventListener('click', function(){assignCard("player2", campfire)})
 
 // generating basic areas - for now - hardcoded scenario
 generateArea("camp", "player1", 8)

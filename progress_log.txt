@@ -14,6 +14,19 @@ t15-03-2022 / game area and menu area creation
     character name changed from orc to brute
     renamed buttons, some id's and classes to fit game convention
 
-- near future - implement health bar? 
+t19-03-2022 / health bar
+    introduced the most basic form of a health bar with health points
+
+t19-03-2022 / first building, first resource
+    a simple building generating a basic resource - "morale"
+    added new class, added new card creation for buildings
+    updated card assign, also corrected an embarrassing typo
+    updated the sprite files, also everything looks worse now
+
+
+
+
+
+
 
 

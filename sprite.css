@@ -2,261 +2,300 @@
   display: inline-block;
   background-repeat: no-repeat;
   background-image: url(images/sprite.svg);
-
 }
-.sa-icon-pestle-mortar {
-  width: 64px;
-  height: 64px;
+.icon-dice-six-faces-six {
+  width: 32px;
+  height: 32px;
   background-position: 0 0;
 }
-.sa-icon-barbed-spear {
-  width: 64px;
-  height: 64px;
-  background-position: -80px 0;
+.icon-dice-six-faces-five {
+  width: 32px;
+  height: 32px;
+  background-position: -48px 0;
 }
-.sa-icon-bone-knife {
-  width: 64px;
-  height: 64px;
-  background-position: -160px 0;
+.icon-dice-six-faces-four {
+  width: 32px;
+  height: 32px;
+  background-position: -96px 0;
 }
-.sa-icon-branch-arrow {
-  width: 64px;
-  height: 64px;
+.icon-dice-six-faces-three {
+  width: 32px;
+  height: 32px;
+  background-position: -144px 0;
+}
+.icon-dice-six-faces-two {
+  width: 32px;
+  height: 32px;
+  background-position: -192px 0;
+}
+.icon-dice-six-faces-one {
+  width: 32px;
+  height: 32px;
   background-position: -240px 0;
 }
-.sa-icon-broken-bone {
-  width: 64px;
-  height: 64px;
-  background-position: -320px 0;
+.icon-perspective-dice-six-faces-random {
+  width: 32px;
+  height: 32px;
+  background-position: -288px 0;
 }
-.sa-icon-broken-tablet {
-  width: 64px;
-  height: 64px;
-  background-position: -400px 0;
+.icon-rally-the-troops {
+  width: 32px;
+  height: 32px;
+  background-position: -336px 0;
 }
-.sa-icon-campfire {
-  width: 64px;
-  height: 64px;
+.icon-pestle-mortar {
+  width: 32px;
+  height: 32px;
+  background-position: -384px 0;
+}
+.icon-barbed-spear {
+  width: 32px;
+  height: 32px;
+  background-position: -432px 0;
+}
+.icon-bone-knife {
+  width: 32px;
+  height: 32px;
   background-position: -480px 0;
 }
-.sa-icon-chicken-leg {
-  width: 64px;
-  height: 64px;
-  background-position: -560px 0;
+.icon-branch-arrow {
+  width: 32px;
+  height: 32px;
+  background-position: -528px 0;
 }
-.sa-icon-rock {
-  width: 64px;
-  height: 64px;
-  background-position: -640px 0;
+.icon-broken-bone {
+  width: 32px;
+  height: 32px;
+  background-position: -576px 0;
 }
-.sa-icon-spine-arrow {
-  width: 64px;
-  height: 64px;
+.icon-broken-tablet {
+  width: 32px;
+  height: 32px;
+  background-position: -624px 0;
+}
+.icon-campfire {
+  width: 32px;
+  height: 32px;
+  background-position: -672px 0;
+}
+.icon-chicken-leg {
+  width: 32px;
+  height: 32px;
   background-position: -720px 0;
 }
-.sa-icon-stone-axe {
-  width: 64px;
-  height: 64px;
-  background-position: -800px 0;
+.icon-rock {
+  width: 32px;
+  height: 32px;
+  background-position: 0 -48px;
 }
-.sa-icon-stone-spear {
-  width: 64px;
-  height: 64px;
-  background-position: -880px 0;
+.icon-spine-arrow {
+  width: 32px;
+  height: 32px;
+  background-position: -48px -48px;
 }
-.sa-icon-stone-tablet {
-  width: 64px;
-  height: 64px;
-  background-position: -960px 0;
+.icon-stone-axe {
+  width: 32px;
+  height: 32px;
+  background-position: -96px -48px;
 }
-.sa-icon-tribal-mask {
-  width: 64px;
-  height: 64px;
-  background-position: -1040px 0;
+.icon-stone-spear {
+  width: 32px;
+  height: 32px;
+  background-position: -144px -48px;
 }
-.sa-icon-animal-hide {
-  width: 64px;
-  height: 64px;
-  background-position: -1120px 0;
+.icon-stone-tablet {
+  width: 32px;
+  height: 32px;
+  background-position: -192px -48px;
 }
-.sa-icon-berries-bowl {
-  width: 64px;
-  height: 64px;
-  background-position: -1200px 0;
+.icon-tribal-mask {
+  width: 32px;
+  height: 32px;
+  background-position: -240px -48px;
 }
-.sa-icon-bindle {
-  width: 64px;
-  height: 64px;
-  background-position: 0 -80px;
+.icon-animal-hide {
+  width: 32px;
+  height: 32px;
+  background-position: -288px -48px;
 }
-.sa-icon-bison {
-  width: 64px;
-  height: 64px;
-  background-position: -80px -80px;
+.icon-berries-bowl {
+  width: 32px;
+  height: 32px;
+  background-position: -336px -48px;
 }
-.sa-icon-bone-knife1 {
-  width: 64px;
-  height: 64px;
-  background-position: -160px -80px;
+.icon-bindle {
+  width: 32px;
+  height: 32px;
+  background-position: -384px -48px;
 }
-.sa-icon-bone-mace {
-  width: 64px;
-  height: 64px;
-  background-position: -240px -80px;
+.icon-bison {
+  width: 32px;
+  height: 32px;
+  background-position: -432px -48px;
 }
-.sa-icon-cave-entrance {
-  width: 64px;
-  height: 64px;
-  background-position: -320px -80px;
+.icon-bone-knife1 {
+  width: 32px;
+  height: 32px;
+  background-position: -480px -48px;
 }
-.sa-icon-caveman {
-  width: 64px;
-  height: 64px;
-  background-position: -400px -80px;
+.icon-bone-mace {
+  width: 32px;
+  height: 32px;
+  background-position: -528px -48px;
 }
-.sa-icon-clay-brick {
-  width: 64px;
-  height: 64px;
-  background-position: -480px -80px;
+.icon-cave-entrance {
+  width: 32px;
+  height: 32px;
+  background-position: -576px -48px;
 }
-.sa-icon-dolmen {
-  width: 64px;
-  height: 64px;
-  background-position: -560px -80px;
+.icon-caveman {
+  width: 32px;
+  height: 32px;
+  background-position: -624px -48px;
 }
-.sa-icon-flint-spark {
-  width: 64px;
-  height: 64px;
-  background-position: -640px -80px;
+.icon-clay-brick {
+  width: 32px;
+  height: 32px;
+  background-position: -672px -48px;
 }
-.sa-icon-fur-shirt {
-  width: 64px;
-  height: 64px;
-  background-position: -720px -80px;
+.icon-dolmen {
+  width: 32px;
+  height: 32px;
+  background-position: -720px -48px;
 }
-.sa-icon-goblin-camp {
-  width: 64px;
-  height: 64px;
-  background-position: -800px -80px;
+.icon-flint-spark {
+  width: 32px;
+  height: 32px;
+  background-position: 0 -96px;
 }
-.sa-icon-hunting-bolas {
-  width: 64px;
-  height: 64px;
-  background-position: -880px -80px;
+.icon-fur-shirt {
+  width: 32px;
+  height: 32px;
+  background-position: -48px -96px;
 }
-.sa-icon-hut {
-  width: 64px;
-  height: 64px;
-  background-position: -960px -80px;
+.icon-goblin-camp {
+  width: 32px;
+  height: 32px;
+  background-position: -96px -96px;
 }
-.sa-icon-huts-village {
-  width: 64px;
-  height: 64px;
-  background-position: -1040px -80px;
+.icon-hunting-bolas {
+  width: 32px;
+  height: 32px;
+  background-position: -144px -96px;
 }
-.sa-icon-ivory-tusks {
-  width: 64px;
-  height: 64px;
-  background-position: -1120px -80px;
+.icon-hut {
+  width: 32px;
+  height: 32px;
+  background-position: -192px -96px;
 }
-.sa-icon-log {
-  width: 64px;
-  height: 64px;
-  background-position: -1200px -80px;
+.icon-huts-village {
+  width: 32px;
+  height: 32px;
+  background-position: -240px -96px;
 }
-.sa-icon-mammoth {
-  width: 64px;
-  height: 64px;
-  background-position: 0 -160px;
+.icon-ivory-tusks {
+  width: 32px;
+  height: 32px;
+  background-position: -288px -96px;
 }
-.sa-icon-menhir {
-  width: 64px;
-  height: 64px;
-  background-position: -80px -160px;
+.icon-log {
+  width: 32px;
+  height: 32px;
+  background-position: -336px -96px;
 }
-.sa-icon-primitive-necklace {
-  width: 64px;
-  height: 64px;
-  background-position: -160px -160px;
+.icon-mammoth {
+  width: 32px;
+  height: 32px;
+  background-position: -384px -96px;
 }
-.sa-icon-primitive-torch {
-  width: 64px;
-  height: 64px;
-  background-position: -240px -160px;
+.icon-menhir {
+  width: 32px;
+  height: 32px;
+  background-position: -432px -96px;
 }
-.sa-icon-pyre {
-  width: 64px;
-  height: 64px;
-  background-position: -320px -160px;
+.icon-primitive-necklace {
+  width: 32px;
+  height: 32px;
+  background-position: -480px -96px;
 }
-.sa-icon-saber-toothed-cat-head {
-  width: 64px;
-  height: 64px;
-  background-position: -400px -160px;
+.icon-primitive-torch {
+  width: 32px;
+  height: 32px;
+  background-position: -528px -96px;
 }
-.sa-icon-silex {
-  width: 64px;
-  height: 64px;
-  background-position: -480px -160px;
+.icon-pyre {
+  width: 32px;
+  height: 32px;
+  background-position: -576px -96px;
 }
-.sa-icon-sling {
-  width: 64px;
-  height: 64px;
-  background-position: -560px -160px;
+.icon-saber-toothed-cat-head {
+  width: 32px;
+  height: 32px;
+  background-position: -624px -96px;
 }
-.sa-icon-spearfishing {
-  width: 64px;
-  height: 64px;
-  background-position: -640px -160px;
+.icon-silex {
+  width: 32px;
+  height: 32px;
+  background-position: -672px -96px;
 }
-.sa-icon-stakes-fence {
-  width: 64px;
-  height: 64px;
-  background-position: -720px -160px;
+.icon-sling {
+  width: 32px;
+  height: 32px;
+  background-position: -720px -96px;
 }
-.sa-icon-stick-frame {
-  width: 64px;
-  height: 64px;
-  background-position: -800px -160px;
+.icon-spearfishing {
+  width: 32px;
+  height: 32px;
+  background-position: 0 -144px;
 }
-.sa-icon-stone-wheel {
-  width: 64px;
-  height: 64px;
-  background-position: -880px -160px;
+.icon-stakes-fence {
+  width: 32px;
+  height: 32px;
+  background-position: -48px -144px;
 }
-.sa-icon-tribal-pendant {
-  width: 64px;
-  height: 64px;
-  background-position: -960px -160px;
+.icon-stick-frame {
+  width: 32px;
+  height: 32px;
+  background-position: -96px -144px;
 }
-.sa-icon-tusks-flag {
-  width: 64px;
-  height: 64px;
-  background-position: -1040px -160px;
+.icon-stone-wheel {
+  width: 32px;
+  height: 32px;
+  background-position: -144px -144px;
 }
-.sa-icon-venus-of-willendorf {
-  width: 64px;
-  height: 64px;
-  background-position: -1120px -160px;
+.icon-tribal-pendant {
+  width: 32px;
+  height: 32px;
+  background-position: -192px -144px;
 }
-.sa-icon-wood-canoe {
-  width: 64px;
-  height: 64px;
-  background-position: -1200px -160px;
+.icon-tusks-flag {
+  width: 32px;
+  height: 32px;
+  background-position: -240px -144px;
 }
-.sa-icon-wood-club {
-  width: 64px;
-  height: 64px;
-  background-position: 0 -240px;
+.icon-venus-of-willendorf {
+  width: 32px;
+  height: 32px;
+  background-position: -288px -144px;
 }
-.sa-icon-wood-stick {
-  width: 64px;
-  height: 64px;
-  background-position: -80px -240px;
+.icon-wood-canoe {
+  width: 32px;
+  height: 32px;
+  background-position: -336px -144px;
 }
-.sa-icon-fish-cooked {
-  width: 64px;
-  height: 64px;
-  background-position: -160px -240px;
+.icon-wood-club {
+  width: 32px;
+  height: 32px;
+  background-position: -384px -144px;
+}
+.icon-wood-stick {
+  width: 32px;
+  height: 32px;
+  background-position: -432px -144px;
+}
+.icon-fish-cooked {
+  width: 32px;
+  height: 32px;
+  background-position: -480px -144px;
 }
 
